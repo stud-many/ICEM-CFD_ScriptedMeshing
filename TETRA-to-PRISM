@@ -1,0 +1,9 @@
+ic_load_tetin GEO.tin
+ic_uns_load TETRA.uns
+ic_save_unstruct temp_prism0.uns
+ic_rm prism.uns
+ic_run_prism GEO.tin temp_prism0.uns prism.uns params GEO.prism_params log prism_cmd.log n_processors 6 first_layer_smoothing_steps 1 auto_reduction 1 stair_step 0 fillet 0.1 max_prism_angle 180 min_prism_quality 0.0099999998 tetra_smooth_limit 0.30000001 
+ic_rm temp_prism0.uns
+ic_unload_mesh 
+ic_delete_empty_parts 
+ic_uns_load prism.uns 3 0 {} 2
