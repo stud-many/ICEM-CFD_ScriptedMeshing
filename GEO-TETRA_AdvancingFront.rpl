@@ -1,0 +1,11 @@
+ic_load_tetin GEO.tin
+ic_run_tetra tin uns run_cutter 1 fix_holes 1 write_volume 0 n_tri_smoothing_steps 20 in_process 1 log tetra_cmd0.log n_processors 6
+ic_uns_subset_delete tri2tet_errors
+ic_save_unstruct tri2tet_temp0.uns 1 {} {} {}
+ic_run_tri2tet tri2tet_temp0.uns tri2tet_mesh.uns safety 1 use_tg_tri2tet 1 use_tg_tgrid_af 1 tetexpand 1 family DOMAIN bgmesh 0 show_progress 1 errors tri2tet_errors verbose 0
+ic_unload_mesh 
+ic_delete_empty_parts 
+ic_uns_load {"tri2tet_mesh.uns"} 3 1 {} 0
+ic_smooth_elements map all upto 0.4 iterations 5 n_processors 6 smooth TETRA_4 smooth TRI_3 float PENTA_6
+ic_uns_check_duplicate_numbers 
+ic_save_unstruct TETMESH.uns
